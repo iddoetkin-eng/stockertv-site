@@ -202,6 +202,10 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   #floating-cta{bottom:1rem;right:1rem;padding:.55rem 1rem;font-size:.6rem}
 }
 
+/* ── SECTION HOVER ── */
+.page-section{transition:transform .3s ease}
+.page-section:hover{transform:scale(1.002)}
+
 /* ── SCROLL ANIMATIONS ── */
 .fade-in-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
 .fade-in-up.visible{opacity:1;transform:translateY(0)}
@@ -712,6 +716,11 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             position: relative;
             overflow: hidden;
             min-height: 220px;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255,255,255,0.08);
         }
 
         .glass-card.expanded {
@@ -2935,7 +2944,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
             border-color: rgba(255, 255, 255, 0.2);
             background: rgba(20, 20, 20, 0.8);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 8px 30px rgba(255,255,255,0.08);
         }
 
         /* Video Bubble Styles */
@@ -5229,6 +5238,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             border-color: rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(255,255,255,0.08);
         }
 
         .card-content {
@@ -5877,6 +5887,12 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             font-size: 0.8rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .node-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255,255,255,0.08);
         }
 
         .flow-path {
