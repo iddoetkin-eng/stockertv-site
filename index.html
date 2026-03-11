@@ -3736,7 +3736,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
                         <path d=&quot;M3 21H21&quot; stroke=&quot;rgba(255,255,255,0.15)&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;/>
                     </svg>
                 </div>
-                <div class=&quot;kpi-value&quot;>3x</div>
+                <div class=&quot;kpi-value&quot; data-count-to=&quot;3&quot; data-count-suffix=&quot;x&quot;>0x</div>
                 <div class=&quot;kpi-label&quot;>Higher retention</div>
                 <p class=&quot;description&quot;>Video-first interfaces outperform static news feeds in platform stickiness and maximize user lifetime value.</p>
             </div>
@@ -3751,7 +3751,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
                         <path d=&quot;M12 2V4M22 12H20M12 22V20M2 12H4&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1&quot; stroke-linecap=&quot;round&quot;/>
                     </svg>
                 </div>
-                <div class=&quot;kpi-value&quot;>UNDER 60S</div>
+                <div class=&quot;kpi-value&quot; data-count-to=&quot;60&quot; data-count-prefix=&quot;UNDER &quot; data-count-suffix=&quot;S&quot;>UNDER 0S</div>
                 <div class=&quot;kpi-label&quot;>Faster understanding</div>
                 <p class=&quot;description&quot;>Distilling complex market movements into sharp, actionable insights delivered in under a minute.</p>
             </div>
@@ -3838,6 +3838,37 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
         });
     </script>
 
+<script>
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3)}
+  function animateCount(el){
+    var target=parseInt(el.getAttribute('data-count-to'),10);
+    var prefix=el.getAttribute('data-count-prefix')||'';
+    var suffix=el.getAttribute('data-count-suffix')||'';
+    var duration=1500,start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var progress=Math.min((ts-start)/duration,1);
+      var current=Math.round(easeOutCubic(progress)*target);
+      el.textContent=prefix+current+suffix;
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters=document.querySelectorAll('[data-count-to]');
+  if(counters.length){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.3});
+    counters.forEach(function(el){obs.observe(el)});
+  }
+})();
+</script>
 
 <script>
 (function(){
@@ -8098,7 +8129,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 
                 <div class=&quot;metrics-bar&quot;>
                     <div class=&quot;metric-item&quot;>
-                        <span class=&quot;metric-value&quot;>100+</span>
+                        <span class=&quot;metric-value&quot; data-count-to=&quot;100&quot; data-count-suffix=&quot;+&quot;>0+</span>
                         <span class=&quot;metric-label&quot;>Daily Videos</span>
                     </div>
                     <div class=&quot;metric-item&quot;>
@@ -8106,7 +8137,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
                         <span class=&quot;metric-label&quot;>Latency Delivery</span>
                     </div>
                     <div class=&quot;metric-item&quot;>
-                        <span class=&quot;metric-value&quot;>100%</span>
+                        <span class=&quot;metric-value&quot; data-count-to=&quot;100&quot; data-count-suffix=&quot;%&quot;>0%</span>
                         <span class=&quot;metric-label&quot;>Compliance Verified</span>
                     </div>
                 </div>
@@ -9038,6 +9069,38 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             });
         });
     </script>
+
+<script>
+(function(){
+  function easeOutCubic(t){return 1-Math.pow(1-t,3)}
+  function animateCount(el){
+    var target=parseInt(el.getAttribute('data-count-to'),10);
+    var prefix=el.getAttribute('data-count-prefix')||'';
+    var suffix=el.getAttribute('data-count-suffix')||'';
+    var duration=1500,start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var progress=Math.min((ts-start)/duration,1);
+      var current=Math.round(easeOutCubic(progress)*target);
+      el.textContent=prefix+current+suffix;
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters=document.querySelectorAll('[data-count-to]');
+  if(counters.length){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.3});
+    counters.forEach(function(el){obs.observe(el)});
+  }
+})();
+</script>
 
 <script>
 (function(){
