@@ -202,6 +202,11 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   #floating-cta{bottom:1rem;right:1rem;padding:.55rem 1rem;font-size:.6rem}
 }
 
+/* ── SCROLL ANIMATIONS ── */
+.fade-in-up{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-in-up.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.fade-in-up{opacity:1;transform:none;transition:none}}
+
 /* ── NAV CTA ── */
 .nav-cta{
   flex-shrink:0;
@@ -344,7 +349,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
 </a>
 
-<div id="s1" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s1" class="page-section fade-in-up visible"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -588,7 +593,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s1" allowfullscreen></iframe></div>
-<div id="s2" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s2" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -1175,7 +1180,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s2" allowfullscreen></iframe></div>
-<div id="s3" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s3" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -2044,7 +2049,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s3" allowfullscreen></iframe></div>
-<div id="s4" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s4" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -2817,7 +2822,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s4" allowfullscreen></iframe></div>
-<div id="s5" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s5" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -3257,7 +3262,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s5" allowfullscreen></iframe></div>
-<div id="s6" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s6" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -3849,7 +3854,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s6" allowfullscreen></iframe></div>
-<div id="s7" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s7" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -4690,7 +4695,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s7" allowfullscreen></iframe></div>
-<div id="s8" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s8" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -5120,7 +5125,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s8" allowfullscreen></iframe></div>
-<div id="s9" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s9" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -5813,7 +5818,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s9" allowfullscreen></iframe></div>
-<div id="s10" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s10" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -6190,7 +6195,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s10" allowfullscreen></iframe></div>
-<div id="s11" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s11" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -6650,7 +6655,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s11" allowfullscreen></iframe></div>
-<div id="s13" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s13" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -7223,7 +7228,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s13" allowfullscreen></iframe></div>
-<div id="s14" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s14" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -7826,7 +7831,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s14" allowfullscreen></iframe></div>
-<div id="s15" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s15" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -8191,7 +8196,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </script>
 </body>
 </html>" data-id="s15" allowfullscreen></iframe></div>
-<div id="s12" class="page-section"><iframe srcdoc="<!DOCTYPE html>
+<div id="s12" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
 <html lang=&quot;en&quot;>
 <head>
     <meta charset=&quot;UTF-8&quot;>
@@ -9112,6 +9117,19 @@ update();
     if(t) window.scrollTo({top: t.offsetTop, behavior:'smooth'});
   });
 });
+</script>
+<script>
+// ── Scroll-triggered fade-in animations ──
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.page-section.fade-in-up:not(.visible)').forEach(function(el){
+    observer.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
