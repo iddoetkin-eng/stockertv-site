@@ -8505,6 +8505,21 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             appearance: none;
         }
 
+        input.field-error, select.field-error, textarea.field-error {
+            border-color: #ef4444;
+        }
+
+        .field-error-msg {
+            color: #ef4444;
+            font-size: 0.72rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .field-error-msg.visible {
+            display: block;
+        }
+
         input::placeholder, textarea::placeholder {
             color: var(--color-text-muted);
         }
@@ -8752,21 +8767,26 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
                          EDIT FORM FIELDS &amp; CTA HERE
                          ============================================== -->
                     <form id=&quot;contactForm&quot; novalidate>
-                        
+                        <input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;New StockerTV Lead&quot;>
+                        <input type=&quot;text&quot; name=&quot;_gotcha&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; style=&quot;position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;&quot;>
+
                         <div class=&quot;form-row&quot;>
                             <div class=&quot;form-group&quot;>
                                 <label for=&quot;workEmail&quot;>Work email</label>
                                 <input type=&quot;email&quot; id=&quot;workEmail&quot; name=&quot;workEmail&quot; required aria-required=&quot;true&quot; placeholder=&quot;name@company.com&quot;>
+                                <div class=&quot;field-error-msg&quot;>This field is required</div>
                             </div>
                             <div class=&quot;form-group&quot;>
                                 <label for=&quot;company&quot;>Company</label>
                                 <input type=&quot;text&quot; id=&quot;company&quot; name=&quot;company&quot; required aria-required=&quot;true&quot; placeholder=&quot;Acme Corp&quot;>
+                                <div class=&quot;field-error-msg&quot;>This field is required</div>
                             </div>
                         </div>
 
                         <div class=&quot;form-group&quot;>
                             <label for=&quot;role&quot;>Role</label>
                             <input type=&quot;text&quot; id=&quot;role&quot; name=&quot;role&quot; required aria-required=&quot;true&quot; placeholder=&quot;Product Manager, CTO, etc.&quot;>
+                            <div class=&quot;field-error-msg&quot;>This field is required</div>
                         </div>
 
                         <div class=&quot;form-group&quot;>
@@ -8822,14 +8842,32 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             const toast = document.getElementById('successToast');
             let toastTimeout;
 
+            // Clear inline errors on input
+            form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+                field.addEventListener('input', () => {
+                    field.classList.remove('field-error');
+                    const msg = field.parentElement.querySelector('.field-error-msg');
+                    if (msg) msg.classList.remove('visible');
+                });
+            });
+
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
 
-                // Simple HTML5 Validation Check
-                if (!form.checkValidity()) {
-                    form.reportValidity();
-                    return;
-                }
+                // Inline validation
+                let firstInvalid = null;
+                form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+                    const msg = field.parentElement.querySelector('.field-error-msg');
+                    if (!field.value.trim() || (field.type === 'email' &amp;&amp; !field.validity.valid)) {
+                        field.classList.add('field-error');
+                        if (msg) { msg.textContent = field.type === 'email' &amp;&amp; field.value.trim() ? 'Please enter a valid email' : 'This field is required'; msg.classList.add('visible'); }
+                        if (!firstInvalid) firstInvalid = field;
+                    } else {
+                        field.classList.remove('field-error');
+                        if (msg) msg.classList.remove('visible');
+                    }
+                });
+                if (firstInvalid) { firstInvalid.focus(); return; }
 
                 // Send data to Formspree
                 fetch('https://formspree.io/f/meergovz', {
@@ -8842,6 +8880,8 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
                         clearTimeout(toastTimeout);
                         toast.classList.add('show');
                         form.reset();
+                        form.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
+                        form.querySelectorAll('.field-error-msg.visible').forEach(m => m.classList.remove('visible'));
                         toastTimeout = setTimeout(() => {
                             toast.classList.remove('show');
                         }, 4000);
