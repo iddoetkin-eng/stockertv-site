@@ -24,7 +24,7 @@
   --nav-h:56px;
   --glass:rgba(0,0,0,0.88);
   --border:rgba(255,255,255,0.07);
-  --text:rgba(255,255,255,0.45);
+  --text:rgba(255,255,255,0.65);
   --text-active:#fff;
   --accent:rgba(255,255,255,0.08);
 }
@@ -200,25 +200,27 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </head>
 <body>
 
-<nav id="nav">
+<a href="#s1" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:99999;padding:.5rem 1rem;background:#fff;color:#000;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:4px;" onfocus="this.style.cssText='position:fixed;left:1rem;top:1rem;z-index:99999;padding:.5rem 1rem;background:#fff;color:#000;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:4px;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">Skip to content</a>
+
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-logo">Stocker<span>TV</span></div>
   <div class="nav-scroll-area">
     <div class="nav-links" id="nav-links">
-<a class="nav-link active" href="#s1" data-section="s1"><span class="nav-num">01</span>Welcome</a>
-<a class="nav-link" href="#s2" data-section="s2"><span class="nav-num">02</span>The Challenge</a>
-<a class="nav-link" href="#s3" data-section="s3"><span class="nav-num">03</span>Feed Demo</a>
-<a class="nav-link" href="#s4" data-section="s4"><span class="nav-num">04</span>How It Works</a>
-<a class="nav-link" href="#s5" data-section="s5"><span class="nav-num">05</span>Anatomy</a>
-<a class="nav-link" href="#s6" data-section="s6"><span class="nav-num">06</span>Engagement</a>
-<a class="nav-link" href="#s7" data-section="s7"><span class="nav-num">07</span>Global Activity</a>
-<a class="nav-link" href="#s8" data-section="s8"><span class="nav-num">08</span>Build for Trust</a>
-<a class="nav-link" href="#s9" data-section="s9"><span class="nav-num">09</span>Target Clients</a>
-<a class="nav-link" href="#s10" data-section="s10"><span class="nav-num">10</span>Plug In</a>
-<a class="nav-link" href="#s11" data-section="s11"><span class="nav-num">11</span>Pilot Plan</a>
-<a class="nav-link" href="#s13" data-section="s13"><span class="nav-num">12</span>FAQ</a>
-<a class="nav-link" href="#s14" data-section="s14"><span class="nav-num">13</span>Privacy</a>
-<a class="nav-link" href="#s15" data-section="s15"><span class="nav-num">14</span>About Us</a>
-<a class="nav-link" href="#s12" data-section="s12"><span class="nav-num">15</span>Pricing</a>
+<a class="nav-link active" href="#s1" data-section="s1" aria-label="Section 1: Welcome" aria-current="page"><span class="nav-num">01</span>Welcome</a>
+<a class="nav-link" href="#s2" data-section="s2" aria-label="Section 2: The Challenge"><span class="nav-num">02</span>The Challenge</a>
+<a class="nav-link" href="#s3" data-section="s3" aria-label="Section 3: Feed Demo"><span class="nav-num">03</span>Feed Demo</a>
+<a class="nav-link" href="#s4" data-section="s4" aria-label="Section 4: How It Works"><span class="nav-num">04</span>How It Works</a>
+<a class="nav-link" href="#s5" data-section="s5" aria-label="Section 5: Anatomy"><span class="nav-num">05</span>Anatomy</a>
+<a class="nav-link" href="#s6" data-section="s6" aria-label="Section 6: Engagement"><span class="nav-num">06</span>Engagement</a>
+<a class="nav-link" href="#s7" data-section="s7" aria-label="Section 7: Global Activity"><span class="nav-num">07</span>Global Activity</a>
+<a class="nav-link" href="#s8" data-section="s8" aria-label="Section 8: Build for Trust"><span class="nav-num">08</span>Build for Trust</a>
+<a class="nav-link" href="#s9" data-section="s9" aria-label="Section 9: Target Clients"><span class="nav-num">09</span>Target Clients</a>
+<a class="nav-link" href="#s10" data-section="s10" aria-label="Section 10: Plug In"><span class="nav-num">10</span>Plug In</a>
+<a class="nav-link" href="#s11" data-section="s11" aria-label="Section 11: Pilot Plan"><span class="nav-num">11</span>Pilot Plan</a>
+<a class="nav-link" href="#s13" data-section="s13" aria-label="Section 12: FAQ"><span class="nav-num">12</span>FAQ</a>
+<a class="nav-link" href="#s14" data-section="s14" aria-label="Section 13: Privacy"><span class="nav-num">13</span>Privacy</a>
+<a class="nav-link" href="#s15" data-section="s15" aria-label="Section 14: About Us"><span class="nav-num">14</span>About Us</a>
+<a class="nav-link" href="#s12" data-section="s12" aria-label="Section 15: Pricing"><span class="nav-num">15</span>Pricing</a>
 
     </div>
   </div>
@@ -226,21 +228,21 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 </nav>
 
 <div id="scroll-progress"></div>
-<div id="dot-nav"><button class="dot active" data-target="s1" title="Welcome"></button>
-<button class="dot" data-target="s2" title="The Challenge"></button>
-<button class="dot" data-target="s3" title="Feed Demo"></button>
-<button class="dot" data-target="s4" title="How It Works"></button>
-<button class="dot" data-target="s5" title="Anatomy"></button>
-<button class="dot" data-target="s6" title="Engagement"></button>
-<button class="dot" data-target="s7" title="Global Activity"></button>
-<button class="dot" data-target="s8" title="Build for Trust"></button>
-<button class="dot" data-target="s9" title="Target Clients"></button>
-<button class="dot" data-target="s10" title="Plug In"></button>
-<button class="dot" data-target="s11" title="Pilot Plan"></button>
-<button class="dot" data-target="s13" title="FAQ"></button>
-<button class="dot" data-target="s14" title="Privacy"></button>
-<button class="dot" data-target="s15" title="About Us"></button>
-<button class="dot" data-target="s12" title="Pricing"></button></div>
+<div id="dot-nav" role="navigation" aria-label="Section navigation"><button class="dot active" data-target="s1" title="Welcome" aria-label="Go to Welcome section"></button>
+<button class="dot" data-target="s2" title="The Challenge" aria-label="Go to The Challenge section"></button>
+<button class="dot" data-target="s3" title="Feed Demo" aria-label="Go to Feed Demo section"></button>
+<button class="dot" data-target="s4" title="How It Works" aria-label="Go to How It Works section"></button>
+<button class="dot" data-target="s5" title="Anatomy" aria-label="Go to Anatomy section"></button>
+<button class="dot" data-target="s6" title="Engagement" aria-label="Go to Engagement section"></button>
+<button class="dot" data-target="s7" title="Global Activity" aria-label="Go to Global Activity section"></button>
+<button class="dot" data-target="s8" title="Build for Trust" aria-label="Go to Build for Trust section"></button>
+<button class="dot" data-target="s9" title="Target Clients" aria-label="Go to Target Clients section"></button>
+<button class="dot" data-target="s10" title="Plug In" aria-label="Go to Plug In section"></button>
+<button class="dot" data-target="s11" title="Pilot Plan" aria-label="Go to Pilot Plan section"></button>
+<button class="dot" data-target="s13" title="FAQ" aria-label="Go to FAQ section"></button>
+<button class="dot" data-target="s14" title="Privacy" aria-label="Go to Privacy section"></button>
+<button class="dot" data-target="s15" title="About Us" aria-label="Go to About Us section"></button>
+<button class="dot" data-target="s12" title="Pricing" aria-label="Go to Pricing section"></button></div>
 
 <!-- Floating CTA -->
 <a href="#s12" id="floating-cta">
@@ -8959,7 +8961,7 @@ function update() {
 
   if (cur !== activeIdx) {
     activeIdx = cur;
-    navLinks.forEach(function(l, i) { l.classList.toggle('active', i === cur); });
+    navLinks.forEach(function(l, i) { l.classList.toggle('active', i === cur); if (i === cur) l.setAttribute('aria-current','page'); else l.removeAttribute('aria-current'); });
     dots.forEach(function(d, i)     { d.classList.toggle('active', i === cur); });
     if (navLinks[cur]) navLinks[cur].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
   }
