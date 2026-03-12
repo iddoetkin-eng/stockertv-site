@@ -306,6 +306,67 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   0%{opacity:.6;transform:translate(-50%,-50%) scale(1)}
   100%{opacity:0;transform:translate(-50%,-50%) scale(1.35)}
 }
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger-btn{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;width:36px;height:36px;
+  background:none;border:none;cursor:pointer;
+  margin-left:auto;padding:4px;z-index:10002;
+}
+.hamburger-btn span{
+  display:block;width:22px;height:2px;background:#fff;
+  border-radius:2px;transition:all .3s ease;
+}
+
+/* ── MOBILE OVERLAY ── */
+.mobile-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.96);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  z-index:10001;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+}
+.mobile-overlay.open{opacity:1;visibility:visible}
+.mobile-overlay .overlay-close{
+  position:absolute;top:1rem;right:1.5rem;
+  background:none;border:none;cursor:pointer;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+}
+.mobile-overlay .overlay-close span{
+  position:absolute;display:block;width:24px;height:2px;background:#fff;border-radius:2px;
+}
+.mobile-overlay .overlay-close span:first-child{transform:rotate(45deg)}
+.mobile-overlay .overlay-close span:last-child{transform:rotate(-45deg)}
+.mobile-overlay .overlay-link{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:'Inter',sans-serif;font-size:1rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);text-decoration:none;
+  padding:.5rem 1rem;border-radius:6px;
+  transition:color .2s ease,background .2s ease;
+}
+.mobile-overlay .overlay-link:hover,
+.mobile-overlay .overlay-link.active{color:#fff;background:rgba(255,255,255,.09)}
+.mobile-overlay .overlay-link .nav-num{font-size:.7rem;opacity:.3;font-weight:600}
+.mobile-overlay .overlay-cta{
+  margin-top:1.5rem;padding:.6rem 2rem;
+  font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  color:#000;background:#fff;border-radius:40px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.mobile-overlay .overlay-cta:hover{transform:scale(1.05);box-shadow:0 0 24px rgba(255,255,255,.25)}
+
+@media(max-width:768px){
+  .nav-scroll-area{display:none!important}
+  .nav-cta{display:none!important}
+  .hamburger-btn{display:flex}
+}
 </style>
 </head>
 <body>
@@ -337,7 +398,28 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
     </div>
   </div>
   <a href="#s12" class="nav-cta" id="nav-cta-btn">Book a Demo</a>
+  <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
+
+<div class="mobile-overlay" id="mobile-overlay">
+  <button class="overlay-close" id="overlay-close" aria-label="Close menu"><span></span><span></span></button>
+  <a class="overlay-link" href="#s1" data-section="s1"><span class="nav-num">01</span>Welcome</a>
+  <a class="overlay-link" href="#s2" data-section="s2"><span class="nav-num">02</span>The Challenge</a>
+  <a class="overlay-link" href="#s3" data-section="s3"><span class="nav-num">03</span>Feed Demo</a>
+  <a class="overlay-link" href="#s4" data-section="s4"><span class="nav-num">04</span>How It Works</a>
+  <a class="overlay-link" href="#s5" data-section="s5"><span class="nav-num">05</span>Anatomy</a>
+  <a class="overlay-link" href="#s6" data-section="s6"><span class="nav-num">06</span>Engagement</a>
+  <a class="overlay-link" href="#s7" data-section="s7"><span class="nav-num">07</span>Global Activity</a>
+  <a class="overlay-link" href="#s8" data-section="s8"><span class="nav-num">08</span>Build for Trust</a>
+  <a class="overlay-link" href="#s9" data-section="s9"><span class="nav-num">09</span>Target Clients</a>
+  <a class="overlay-link" href="#s10" data-section="s10"><span class="nav-num">10</span>Plug In</a>
+  <a class="overlay-link" href="#s11" data-section="s11"><span class="nav-num">11</span>Pilot Plan</a>
+  <a class="overlay-link" href="#s13" data-section="s13"><span class="nav-num">12</span>FAQ</a>
+  <a class="overlay-link" href="#s14" data-section="s14"><span class="nav-num">13</span>Privacy</a>
+  <a class="overlay-link" href="#s15" data-section="s15"><span class="nav-num">14</span>About Us</a>
+  <a class="overlay-link" href="#s12" data-section="s12"><span class="nav-num">15</span>Pricing</a>
+  <a class="overlay-cta" href="#s12">Book a Demo</a>
+</div>
 
 <div id="scroll-progress"></div>
 <div id="dot-nav" role="navigation" aria-label="Section navigation"><button class="dot active" data-target="s1" title="Welcome" aria-label="Go to Welcome section"></button>
@@ -9234,6 +9316,50 @@ window.addEventListener('load',function(){
   setTimeout(function(){loader.classList.add('fade-out')},1200);
   setTimeout(function(){loader.style.display='none'},1700);
 });
+</script>
+<script>
+// ── Mobile hamburger menu ──
+(function(){
+  var btn=document.getElementById('hamburger-btn');
+  var overlay=document.getElementById('mobile-overlay');
+  var closeBtn=document.getElementById('overlay-close');
+  if(!btn||!overlay||!closeBtn)return;
+
+  function openMenu(){overlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){overlay.classList.remove('open');document.body.style.overflow='';}
+
+  btn.addEventListener('click',openMenu);
+  closeBtn.addEventListener('click',closeMenu);
+
+  // Close on link click and scroll to section
+  var links=overlay.querySelectorAll('.overlay-link, .overlay-cta');
+  links.forEach(function(link){
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      closeMenu();
+      var sec=link.dataset.section||'s12';
+      var t=document.getElementById(sec);
+      if(t) setTimeout(function(){window.scrollTo({top:t.offsetTop,behavior:'smooth'});},100);
+    });
+  });
+
+  // Sync active state with main nav
+  var overlayLinks=Array.from(overlay.querySelectorAll('.overlay-link'));
+  var origUpdate=window.update||null;
+  if(typeof update==='function'){
+    var _origUpdate=update;
+    window.update=function(){
+      _origUpdate();
+      var mainActive=document.querySelector('#nav-links .nav-link.active');
+      if(mainActive){
+        var activeSec=mainActive.dataset.section;
+        overlayLinks.forEach(function(ol){ol.classList.toggle('active',ol.dataset.section===activeSec);});
+      }
+    };
+    window.removeEventListener('scroll',_origUpdate);
+    window.addEventListener('scroll',window.update,{passive:true});
+  }
+})();
 </script>
 </body>
 </html>
