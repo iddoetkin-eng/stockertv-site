@@ -645,6 +645,8 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
     
 .video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
 @keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
+.type-cursor{font-weight:300;animation:blink .7s step-end infinite;color:rgba(255,255,255,.7)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
     </style>
 </head>
 <body>
@@ -653,7 +655,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
         <!-- Section 1: Hero -->
         <section id=&quot;s1&quot; class=&quot;section-container&quot;>
             <div class=&quot;hero-content&quot;>
-                <h1 class=&quot;hero-headline&quot;>Welcome to StockerTV</h1>
+                <h1 class=&quot;hero-headline&quot; id=&quot;heroType&quot;><span id=&quot;typeCursor&quot; class=&quot;type-cursor&quot;>|</span></h1>
                 <p class=&quot;hero-subline&quot;>Compliance-first market video updates for modern platforms.</p>
             </div>
 
@@ -720,6 +722,20 @@ document.querySelectorAll('video').forEach(function(v){
   else v.addEventListener('canplay',hide);
   setTimeout(function(){if(sh.parentNode)hide()},8000);
 });
+</script>
+<script>
+(function(){
+  var text=&quot;Welcome to StockerTV&quot;;
+  var el=document.getElementById(&quot;heroType&quot;);
+  var cursor=document.getElementById(&quot;typeCursor&quot;);
+  var i=0;
+  setTimeout(function(){
+    var iv=setInterval(function(){
+      if(i<text.length){el.insertBefore(document.createTextNode(text[i]),cursor);i++;}
+      else{clearInterval(iv);setTimeout(function(){cursor.style.animation=&quot;none&quot;;cursor.style.opacity=&quot;0&quot;;cursor.style.transition=&quot;opacity .4s&quot;;},1000);}
+    },100);
+  },2000);
+})();
 </script>
 </body>
 </html>" data-id="s1" allowfullscreen></iframe></div>
