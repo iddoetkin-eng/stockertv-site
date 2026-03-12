@@ -642,6 +642,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             }
         }
 
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -704,6 +707,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s1" allowfullscreen></iframe></div>
@@ -1078,6 +1094,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .guide-bubble-wrapper { right: 20px; bottom: 20px; }
             .guide-text-tag { display: none; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -1296,6 +1315,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s2" allowfullscreen></iframe></div>
@@ -1787,6 +1819,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -2165,6 +2200,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s3" allowfullscreen></iframe></div>
@@ -3198,6 +3246,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .flow-svg { display: none; }
             .card { min-height: auto; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -3378,6 +3429,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s5" allowfullscreen></iframe></div>
@@ -3803,6 +3867,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .bubble-label { display: none; }
             .product-guide-host { bottom: 20px; right: 20px; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -4001,6 +4068,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s6" allowfullscreen></iframe></div>
@@ -4350,6 +4430,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .slide-container { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding: var(--spacing-md); gap: var(--spacing-sm); height: auto; min-height: 100vh; overflow: visible; }
             .content-col { text-align: left; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -4843,6 +4926,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
 </script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
+</script>
 </body>
 </html>" data-id="s7" allowfullscreen></iframe></div>
 <div id="s8" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
@@ -5083,6 +5179,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
         .close-modal:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -5272,6 +5371,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s8" allowfullscreen></iframe></div>
@@ -5723,6 +5835,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .guide-bubble-container { bottom: 20px; right: 20px; }
             .guide-bubble { width: 64px; height: 64px; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -5967,6 +6082,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
 </script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
+</script>
 </body>
 </html>" data-id="s9" allowfullscreen></iframe></div>
 <div id="s10" class="page-section fade-in-up"><iframe srcdoc="<!DOCTYPE html>
@@ -6174,6 +6302,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -6349,6 +6480,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s10" allowfullscreen></iframe></div>
@@ -6617,6 +6761,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             border: 1px solid rgba(255,255,255,0.1);
             color: #888;
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -6809,6 +6956,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s11" allowfullscreen></iframe></div>
@@ -8188,6 +8348,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             .main-grid { grid-template-columns: 1fr; }
             .product-preview { margin: 0 auto 3rem auto; }
         }
+    
+.video-shimmer{position:absolute;inset:0;background:linear-gradient(110deg,#1a1a1a 8%,#2a2a2a 18%,#1a1a1a 33%);background-size:200% 100%;animation:shimmer 1.5s linear infinite;border-radius:inherit;z-index:2;transition:opacity .4s ease;pointer-events:none}
+@keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
     </style>
 </head>
 <body>
@@ -8351,6 +8514,19 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
   if(document.readyState !== 'loading') reportHeight();
   else document.addEventListener('DOMContentLoaded', reportHeight);
 })();
+</script>
+<script>
+document.querySelectorAll('video').forEach(function(v){
+  var p=v.parentElement;
+  if(p&&getComputedStyle(p).position==='static')p.style.position='relative';
+  var sh=document.createElement('div');
+  sh.className='video-shimmer';
+  p.insertBefore(sh,p.firstChild);
+  function hide(){sh.style.opacity='0';setTimeout(function(){if(sh.parentNode)sh.remove()},400)}
+  if(v.readyState>=3)hide();
+  else v.addEventListener('canplay',hide);
+  setTimeout(function(){if(sh.parentNode)hide()},8000);
+});
 </script>
 </body>
 </html>" data-id="s15" allowfullscreen></iframe></div>
