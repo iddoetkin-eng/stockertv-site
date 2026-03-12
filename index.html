@@ -663,6 +663,11 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 @keyframes shimmer{0%{background-position:200% 0}to{background-position:-200% 0}}
 .type-cursor{font-weight:300;animation:blink .7s step-end infinite;color:rgba(255,255,255,.7)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.live-ticker{display:inline-flex;align-items:center;gap:6px;font-family:'Courier New',monospace;font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.75rem;opacity:0;transition:opacity .6s ease}
+.live-ticker.visible{opacity:1}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse-dot 2s ease infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 4px rgba(34,197,94,0)}}
+.ticker-num{display:inline-block;transition:opacity .3s ease}
     </style>
 </head>
 <body>
@@ -673,6 +678,7 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             <div class=&quot;hero-content&quot;>
                 <h1 class=&quot;hero-headline&quot; id=&quot;heroType&quot;><span id=&quot;typeCursor&quot; class=&quot;type-cursor&quot;>|</span></h1>
                 <p class=&quot;hero-subline&quot;>Compliance-first market video updates for modern platforms.</p>
+                <div class=&quot;live-ticker&quot; id=&quot;liveTicker&quot;><span class=&quot;live-dot&quot;></span><span class=&quot;ticker-num&quot; id=&quot;tickerNum&quot;>2,847</span> scripts generated and counting...</div>
             </div>
 
             <div class=&quot;video-wrapper&quot;>
@@ -751,6 +757,22 @@ document.querySelectorAll('video').forEach(function(v){
       else{clearInterval(iv);setTimeout(function(){cursor.style.animation=&quot;none&quot;;cursor.style.opacity=&quot;0&quot;;cursor.style.transition=&quot;opacity .4s&quot;;},1000);}
     },100);
   },2000);
+})();
+</script>
+<script>
+(function(){
+  var count=2847;
+  var numEl=document.getElementById(&quot;tickerNum&quot;);
+  var ticker=document.getElementById(&quot;liveTicker&quot;);
+  setTimeout(function(){ticker.classList.add(&quot;visible&quot;)},4500);
+  setInterval(function(){
+    count++;
+    numEl.style.opacity=&quot;0&quot;;
+    setTimeout(function(){
+      numEl.textContent=count.toLocaleString();
+      numEl.style.opacity=&quot;1&quot;;
+    },300);
+  },3500);
 })();
 </script>
 </body>
