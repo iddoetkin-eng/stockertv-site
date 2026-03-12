@@ -8986,7 +8986,7 @@ document.querySelectorAll('video').forEach(function(v){
         }
 
         /* Button */
-        .btn-primary {
+        .btn-primary, .btn-next {
             width: 100%;
             background: var(--color-text-primary);
             color: var(--color-bg);
@@ -9004,15 +9004,131 @@ document.querySelectorAll('video').forEach(function(v){
             gap: var(--spacing-2);
         }
 
-        .btn-primary:hover, .btn-primary:focus-visible {
+        .btn-primary:hover, .btn-primary:focus-visible,
+        .btn-next:hover, .btn-next:focus-visible {
             background: #e4e4e7;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(255,255,255,0.1);
         }
 
-        .btn-primary:active {
+        .btn-primary:active, .btn-next:active {
             transform: translateY(0);
             box-shadow: none;
+        }
+
+        .btn-back {
+            width: 100%;
+            background: transparent;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-3) var(--spacing-4);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .btn-back:hover, .btn-back:focus-visible {
+            border-color: rgba(255,255,255,0.2);
+            color: var(--color-text-primary);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: var(--spacing-3);
+            margin-top: var(--spacing-2);
+        }
+
+        .form-buttons .btn-back { width: 40%; }
+        .form-buttons .btn-primary { width: 60%; margin-top: 0; }
+
+        /* Step Indicator */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: var(--color-accent);
+            box-shadow: 0 0 8px var(--color-accent-glow-strong);
+            width: 10px;
+            height: 10px;
+        }
+
+        .step-label {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Form Step Transitions */
+        .form-steps-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-step {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .form-step.hidden-left {
+            display: none;
+        }
+
+        .form-step.hidden-right {
+            display: none;
+        }
+
+        .form-step.slide-in-right {
+            animation: slideInRight 0.35s ease forwards;
+        }
+
+        .form-step.slide-in-left {
+            animation: slideInLeft 0.35s ease forwards;
+        }
+
+        .form-step.slide-out-left {
+            animation: slideOutLeft 0.35s ease forwards;
+        }
+
+        .form-step.slide-out-right {
+            animation: slideOutRight 0.35s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideOutLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-30px); }
+        }
+
+        @keyframes slideOutRight {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(30px); }
         }
 
         .microcopy {
@@ -9197,52 +9313,75 @@ document.querySelectorAll('video').forEach(function(v){
                         <input type=&quot;hidden&quot; name=&quot;_subject&quot; value=&quot;New StockerTV Lead&quot;>
                         <input type=&quot;text&quot; name=&quot;_gotcha&quot; tabindex=&quot;-1&quot; autocomplete=&quot;off&quot; style=&quot;position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;&quot;>
 
-                        <div class=&quot;form-row&quot;>
-                            <div class=&quot;form-group&quot;>
-                                <label for=&quot;workEmail&quot;>Work email</label>
-                                <input type=&quot;email&quot; id=&quot;workEmail&quot; name=&quot;workEmail&quot; required aria-required=&quot;true&quot; placeholder=&quot;name@company.com&quot;>
-                                <div class=&quot;field-error-msg&quot;>This field is required</div>
+                        <div class=&quot;step-indicator&quot;>
+                            <div class=&quot;step-dot active&quot; id=&quot;dot1&quot;></div>
+                            <div class=&quot;step-dot&quot; id=&quot;dot2&quot;></div>
+                            <span class=&quot;step-label&quot; id=&quot;stepLabel&quot;>Step 1 of 2</span>
+                        </div>
+
+                        <div class=&quot;form-steps-wrapper&quot;>
+                            <div class=&quot;form-step&quot; id=&quot;step1&quot;>
+                                <div class=&quot;form-row&quot;>
+                                    <div class=&quot;form-group&quot;>
+                                        <label for=&quot;workEmail&quot;>Work email</label>
+                                        <input type=&quot;email&quot; id=&quot;workEmail&quot; name=&quot;workEmail&quot; required aria-required=&quot;true&quot; placeholder=&quot;name@company.com&quot;>
+                                        <div class=&quot;field-error-msg&quot;>This field is required</div>
+                                    </div>
+                                    <div class=&quot;form-group&quot;>
+                                        <label for=&quot;company&quot;>Company</label>
+                                        <input type=&quot;text&quot; id=&quot;company&quot; name=&quot;company&quot; required aria-required=&quot;true&quot; placeholder=&quot;Acme Corp&quot;>
+                                        <div class=&quot;field-error-msg&quot;>This field is required</div>
+                                    </div>
+                                </div>
+
+                                <button type=&quot;button&quot; class=&quot;btn-next&quot; id=&quot;btnNext&quot;>
+                                    Next
+                                    <svg aria-hidden=&quot;true&quot; width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><line x1=&quot;5&quot; y1=&quot;12&quot; x2=&quot;19&quot; y2=&quot;12&quot;></line><polyline points=&quot;12 5 19 12 12 19&quot;></polyline></svg>
+                                </button>
                             </div>
-                            <div class=&quot;form-group&quot;>
-                                <label for=&quot;company&quot;>Company</label>
-                                <input type=&quot;text&quot; id=&quot;company&quot; name=&quot;company&quot; required aria-required=&quot;true&quot; placeholder=&quot;Acme Corp&quot;>
-                                <div class=&quot;field-error-msg&quot;>This field is required</div>
+
+                            <div class=&quot;form-step hidden-right&quot; id=&quot;step2&quot;>
+                                <div class=&quot;form-group&quot;>
+                                    <label for=&quot;role&quot;>Role</label>
+                                    <input type=&quot;text&quot; id=&quot;role&quot; name=&quot;role&quot; required aria-required=&quot;true&quot; placeholder=&quot;Product Manager, CTO, etc.&quot;>
+                                    <div class=&quot;field-error-msg&quot;>This field is required</div>
+                                </div>
+
+                                <div class=&quot;form-group&quot;>
+                                    <label for=&quot;integration&quot;>What are you integrating?</label>
+                                    <div class=&quot;select-wrapper&quot;>
+                                        <select id=&quot;integration&quot; name=&quot;integration&quot;>
+                                            <option value=&quot;Embed&quot;>Embed</option>
+                                            <option value=&quot;API&quot;>API</option>
+                                            <option value=&quot;Both&quot;>Both</option>
+                                            <option value=&quot;Not sure&quot;>Not sure</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class=&quot;form-group&quot;>
+                                    <label for=&quot;coverage&quot;>What coverage do you need?</label>
+                                    <input type=&quot;text&quot; id=&quot;coverage&quot; name=&quot;coverage&quot; placeholder=&quot;e.g. US Equities, Crypto, Top 100 ETFs&quot;>
+                                </div>
+
+                                <div class=&quot;form-group&quot;>
+                                    <label for=&quot;message&quot;>Message (optional)</label>
+                                    <textarea id=&quot;message&quot; name=&quot;message&quot; placeholder=&quot;Any specific requirements or questions?&quot;></textarea>
+                                </div>
+
+                                <div class=&quot;form-buttons&quot;>
+                                    <button type=&quot;button&quot; class=&quot;btn-back&quot; id=&quot;btnBack&quot;>
+                                        <svg aria-hidden=&quot;true&quot; width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><line x1=&quot;19&quot; y1=&quot;12&quot; x2=&quot;5&quot; y2=&quot;12&quot;></line><polyline points=&quot;12 19 5 12 12 5&quot;></polyline></svg>
+                                        Back
+                                    </button>
+                                    <button type=&quot;submit&quot; class=&quot;btn-primary&quot;>
+                                        Send Request
+                                        <svg aria-hidden=&quot;true&quot; width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><line x1=&quot;22&quot; y1=&quot;2&quot; x2=&quot;11&quot; y2=&quot;13&quot;></line><polygon points=&quot;22 2 15 22 11 13 2 9 22 2&quot;></polygon></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class=&quot;form-group&quot;>
-                            <label for=&quot;role&quot;>Role</label>
-                            <input type=&quot;text&quot; id=&quot;role&quot; name=&quot;role&quot; required aria-required=&quot;true&quot; placeholder=&quot;Product Manager, CTO, etc.&quot;>
-                            <div class=&quot;field-error-msg&quot;>This field is required</div>
-                        </div>
-
-                        <div class=&quot;form-group&quot;>
-                            <label for=&quot;integration&quot;>What are you integrating?</label>
-                            <div class=&quot;select-wrapper&quot;>
-                                <select id=&quot;integration&quot; name=&quot;integration&quot;>
-                                    <option value=&quot;Embed&quot;>Embed</option>
-                                    <option value=&quot;API&quot;>API</option>
-                                    <option value=&quot;Both&quot;>Both</option>
-                                    <option value=&quot;Not sure&quot;>Not sure</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class=&quot;form-group&quot;>
-                            <label for=&quot;coverage&quot;>What coverage do you need?</label>
-                            <input type=&quot;text&quot; id=&quot;coverage&quot; name=&quot;coverage&quot; placeholder=&quot;e.g. US Equities, Crypto, Top 100 ETFs&quot;>
-                        </div>
-
-                        <div class=&quot;form-group&quot;>
-                            <label for=&quot;message&quot;>Message (optional)</label>
-                            <textarea id=&quot;message&quot; name=&quot;message&quot; placeholder=&quot;Any specific requirements or questions?&quot;></textarea>
-                        </div>
-
-                        <button type=&quot;submit&quot; class=&quot;btn-primary&quot;>
-                            Send Request
-                            <svg aria-hidden=&quot;true&quot; width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><line x1=&quot;22&quot; y1=&quot;2&quot; x2=&quot;11&quot; y2=&quot;13&quot;></line><polygon points=&quot;22 2 15 22 11 13 2 9 22 2&quot;></polygon></svg>
-                        </button>
-                        
                         <p class=&quot;microcopy&quot;>
                             <svg aria-hidden=&quot;true&quot; width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; style=&quot;color: var(--color-success);&quot;><path d=&quot;M22 11.08V12a10 10 0 1 1-5.93-9.14&quot;></path><polyline points=&quot;22 4 12 14.01 9 11.01&quot;></polyline></svg>
                             Typically responds within one business day. We'll set up a sandbox for you.
@@ -9267,23 +9406,18 @@ document.querySelectorAll('video').forEach(function(v){
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('contactForm');
             const toast = document.getElementById('successToast');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const btnNext = document.getElementById('btnNext');
+            const btnBack = document.getElementById('btnBack');
+            const dot1 = document.getElementById('dot1');
+            const dot2 = document.getElementById('dot2');
+            const stepLabel = document.getElementById('stepLabel');
             let toastTimeout;
 
-            // Clear inline errors on input
-            form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
-                field.addEventListener('input', () => {
-                    field.classList.remove('field-error');
-                    const msg = field.parentElement.querySelector('.field-error-msg');
-                    if (msg) msg.classList.remove('visible');
-                });
-            });
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Inline validation
+            function validateStepFields(stepEl) {
                 let firstInvalid = null;
-                form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+                stepEl.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
                     const msg = field.parentElement.querySelector('.field-error-msg');
                     if (!field.value.trim() || (field.type === 'email' &amp;&amp; !field.validity.valid)) {
                         field.classList.add('field-error');
@@ -9294,6 +9428,70 @@ document.querySelectorAll('video').forEach(function(v){
                         if (msg) msg.classList.remove('visible');
                     }
                 });
+                return firstInvalid;
+            }
+
+            // Clear inline errors on input
+            form.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+                field.addEventListener('input', () => {
+                    field.classList.remove('field-error');
+                    const msg = field.parentElement.querySelector('.field-error-msg');
+                    if (msg) msg.classList.remove('visible');
+                });
+            });
+
+            // Next button
+            btnNext.addEventListener('click', () => {
+                const firstInvalid = validateStepFields(step1);
+                if (firstInvalid) { firstInvalid.focus(); return; }
+
+                step1.classList.add('slide-out-left');
+                step1.addEventListener('animationend', function handler() {
+                    step1.removeEventListener('animationend', handler);
+                    step1.classList.remove('slide-out-left');
+                    step1.classList.add('hidden-left');
+                    step2.classList.remove('hidden-right');
+                    step2.classList.add('slide-in-right');
+                    step2.addEventListener('animationend', function h2() {
+                        step2.removeEventListener('animationend', h2);
+                        step2.classList.remove('slide-in-right');
+                    });
+                    dot1.classList.remove('active');
+                    dot2.classList.add('active');
+                    stepLabel.textContent = 'Step 2 of 2';
+                    var firstInput = step2.querySelector('input, select, textarea');
+                    if (firstInput) firstInput.focus();
+                    if (typeof reportHeight === 'function') reportHeight();
+                });
+            });
+
+            // Back button
+            btnBack.addEventListener('click', () => {
+                step2.classList.add('slide-out-right');
+                step2.addEventListener('animationend', function handler() {
+                    step2.removeEventListener('animationend', handler);
+                    step2.classList.remove('slide-out-right');
+                    step2.classList.add('hidden-right');
+                    step1.classList.remove('hidden-left');
+                    step1.classList.add('slide-in-left');
+                    step1.addEventListener('animationend', function h2() {
+                        step1.removeEventListener('animationend', h2);
+                        step1.classList.remove('slide-in-left');
+                    });
+                    dot2.classList.remove('active');
+                    dot1.classList.add('active');
+                    stepLabel.textContent = 'Step 1 of 2';
+                    var firstInput = step1.querySelector('input');
+                    if (firstInput) firstInput.focus();
+                    if (typeof reportHeight === 'function') reportHeight();
+                });
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Validate step 2 fields
+                let firstInvalid = validateStepFields(step2);
                 if (firstInvalid) { firstInvalid.focus(); return; }
 
                 // Send data to Formspree
@@ -9309,6 +9507,13 @@ document.querySelectorAll('video').forEach(function(v){
                         form.reset();
                         form.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
                         form.querySelectorAll('.field-error-msg.visible').forEach(m => m.classList.remove('visible'));
+                        // Reset to step 1
+                        step2.classList.add('hidden-right');
+                        step1.classList.remove('hidden-left');
+                        dot2.classList.remove('active');
+                        dot1.classList.add('active');
+                        stepLabel.textContent = 'Step 1 of 2';
+                        if (typeof reportHeight === 'function') reportHeight();
                         toastTimeout = setTimeout(() => {
                             toast.classList.remove('show');
                         }, 4000);
@@ -9327,14 +9532,14 @@ document.querySelectorAll('video').forEach(function(v){
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
                     // Focus the first input of the form for accessibility
                     const firstInput = targetElement.querySelector('input');
                     if (firstInput) {
                         firstInput.focus();
                     }
-                    
+
                     // Scroll into view on mobile where it stacks
                     if (window.innerWidth < 1024) {
                         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
