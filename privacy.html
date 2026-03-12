@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy & Data Handling — StockerTV</title>
+<meta name="description" content="StockerTV privacy and data handling policy. Minimal data, platform-level delivery, no user-level tracking.">
+<link rel="canonical" href="https://iddoetkin-eng.github.io/stockertv-site/privacy.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;color:#fff;line-height:1.7;
+  padding:3rem 1.5rem;
+}
+.container{max-width:800px;margin:0 auto}
+.back-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;font-weight:500;
+  margin-bottom:3rem;transition:color .2s;
+}
+.back-link:hover{color:#fff}
+.back-link svg{width:16px;height:16px}
+h1{
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;
+  margin-bottom:.5rem;
+  background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.5) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.subtitle{font-size:1.15rem;color:#a1a1aa;margin-bottom:3rem}
+h2{
+  font-size:1.25rem;font-weight:600;color:#60a5fa;
+  margin-top:2.5rem;margin-bottom:.75rem;letter-spacing:-.01em;
+}
+p{color:#a1a1aa;margin-bottom:1rem;font-size:.95rem}
+p strong{color:#fff;font-weight:500}
+ul{list-style:none;padding:0;margin-bottom:1.5rem}
+ul li{
+  position:relative;padding-left:1.25rem;color:#a1a1aa;
+  font-size:.95rem;margin-bottom:.35rem;
+}
+ul li::before{content:"•";position:absolute;left:0;color:#60a5fa}
+.card-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;
+  margin:2rem 0;
+}
+@media(max-width:640px){.card-grid{grid-template-columns:1fr}}
+.card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:1.5rem;
+}
+.card h3{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:.4rem}
+.card p{font-size:.85rem;margin-bottom:.5rem}
+.card ul{margin-bottom:0}
+.card ul li{font-size:.8rem}
+.diagram{
+  background:rgba(255,255,255,.03);border:1px solid rgba(100,149,237,.2);
+  border-radius:16px;padding:2rem;margin:2rem 0;text-align:center;
+}
+.diagram .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#a1a1aa;margin-bottom:1rem}
+.diagram .flow{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.diagram .node{
+  background:#000;border:1px solid rgba(255,255,255,.1);border-radius:12px;
+  padding:.75rem 1.25rem;font-size:.85rem;font-weight:500;
+}
+.diagram .node.highlight{border-color:#60a5fa;color:#60a5fa}
+.diagram .arrow{color:rgba(255,255,255,.3);font-size:1.2rem}
+.footer-note{
+  margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.3);font-size:.8rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-link">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+  Back to StockerTV
+</a>
+
+<h1>Privacy & Data Handling.</h1>
+<p class="subtitle">Minimal data. Platform-level delivery.</p>
+
+<h2>Our Approach</h2>
+<p><strong>Built on strict factual neutrality.</strong> Because our content is 100% objective and contains no calls-to-action, zero personalization is needed. We deliver financial news without behavioral tracking or psychological triggers.</p>
+
+<h2>Data Flow Architecture</h2>
+<div class="diagram">
+  <div class="label">Stateless Delivery Architecture</div>
+  <div class="flow">
+    <div class="node">Host Platform</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node highlight">StockerTV Engine</div>
+    <span class="arrow">&rarr;</span>
+    <div class="node">End User View</div>
+  </div>
+</div>
+
+<h2>Core Privacy Principles</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <h3>No user-level data</h3>
+    <p>The video layer operates without accessing individual user profiles.</p>
+    <ul>
+      <li>No account data needed</li>
+      <li>No behavioral tracking</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Platform-level delivery</h3>
+    <p>Content is delivered at the application level, not the individual level.</p>
+    <ul>
+      <li>Feed or API-based integration</li>
+      <li>No personal targeting</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Minimal processing</h3>
+    <p>Only operational data necessary for delivery and performance.</p>
+    <ul>
+      <li>Basic usage metrics</li>
+      <li>Aggregated insights only</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Stateless architecture</h3>
+    <p>Built with modern enterprise privacy expectations in mind.</p>
+    <ul>
+      <li>Clear data boundaries</li>
+      <li>No cross-session tracking</li>
+    </ul>
+  </div>
+
+</div>
+
+<p class="footer-note">&copy; StockerTV. This page describes our data handling approach. For specific compliance inquiries, please contact us through the main site.</p>
+
+</div>
+
+</body>
+</html>
