@@ -412,18 +412,9 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
         }
 
         /* S1 - Hero Specifics */
-        @keyframes gradientShift {
-            0%   { background-position: 30% 20%, 70% 80%, 0 0; background-size: 60% 60%, 50% 50%, 100% 100%; }
-            50%  { background-position: 50% 30%, 50% 60%, 0 0; background-size: 70% 70%, 60% 60%, 100% 100%; }
-            100% { background-position: 70% 40%, 30% 70%, 0 0; background-size: 60% 60%, 50% 50%, 100% 100%; }
-        }
-
         #s1 {
-            background:
-                radial-gradient(ellipse at 30% 20%, rgba(100,130,255,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(255,100,150,0.06) 0%, transparent 50%),
-                var(--bg-color);
-            animation: gradientShift 12s ease-in-out infinite alternate;
+            background: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 60%),
+                        var(--bg-color);
         }
 
         .hero-content {
@@ -554,9 +545,6 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            #s1 { animation: none; }
-        }
     </style>
 </head>
 <body>
@@ -8141,11 +8129,11 @@ body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden
 
                 <div class=&quot;metrics-bar&quot;>
                     <div class=&quot;metric-item&quot;>
-                        <span class=&quot;metric-value&quot; data-count-to=&quot;100&quot; data-count-suffix=&quot;+&quot;>0+</span>
+                        <span class=&quot;metric-value&quot; data-count-to=&quot;200&quot; data-count-suffix=&quot;+&quot;>0+</span>
                         <span class=&quot;metric-label&quot;>Daily Videos</span>
                     </div>
                     <div class=&quot;metric-item&quot;>
-                        <span class=&quot;metric-value&quot;>Zero</span>
+                        <span class=&quot;metric-value&quot;>Minimal</span>
                         <span class=&quot;metric-label&quot;>Latency Delivery</span>
                     </div>
                     <div class=&quot;metric-item&quot;>
