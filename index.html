@@ -9763,7 +9763,7 @@ window.addEventListener('message', function(e) {
   if (!id || !h) return;
   var iframe = document.querySelector('iframe[data-id="' + id + '"]');
   if (iframe) {
-    var newH = Math.min(Math.max(h, window.innerHeight), 20000);
+    var newH = Math.max(h, window.innerHeight);
     iframe.style.height = newH + 'px';
     iframe.closest('.page-section').style.minHeight = newH + 'px';
   }
