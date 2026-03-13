@@ -8625,6 +8625,34 @@ document.querySelectorAll('video').forEach(function(v){
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
 </script>
+<script>
+(function(){
+  function reportHeight(){
+    var h = Math.max(
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement.scrollHeight
+    );
+    window.parent.postMessage({type:'iframeResize', height: h, id: window.frameId}, '*');
+  }
+  window.frameId = 's15';
+  window.addEventListener('load', function(){
+    reportHeight();
+    if(window.ResizeObserver){
+      var _prevH=0;
+      var ro = new ResizeObserver(function(){
+        var h=Math.max(document.body?document.body.scrollHeight:0,document.documentElement.scrollHeight);
+        if(Math.abs(h-_prevH)>20){_prevH=h;reportHeight();}
+      });
+      ro.observe(document.documentElement);
+    }
+    setTimeout(reportHeight, 500);
+    setTimeout(reportHeight, 1500);
+    setTimeout(reportHeight, 3000);
+  });
+  if(document.readyState !== 'loading') reportHeight();
+  else document.addEventListener('DOMContentLoaded', reportHeight);
+})();
+</script>
 
 </body>
 </html>" data-id="s15" allowfullscreen></iframe></div>
