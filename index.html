@@ -9756,17 +9756,34 @@ document.querySelectorAll('video').forEach(function(v){
 
 <script>
 // ── Auto-resize iframes via postMessage ──────────────────────
+var _resizeTimers = {};
 window.addEventListener('message', function(e) {
   if (!e.data || e.data.type !== 'iframeResize') return;
   var id = e.data.id;
   var h  = e.data.height;
   if (!id || !h) return;
-  var iframe = document.querySelector('iframe[data-id="' + id + '"]');
-  if (iframe) {
+  // Debounce per iframe
+  clearTimeout(_resizeTimers[id]);
+  _resizeTimers[id] = setTimeout(function() {
+    var iframe = document.querySelector('iframe[data-id="' + id + '"]');
+    if (!iframe) return;
     var newH = Math.max(h, window.innerHeight);
+    var oldH = parseInt(iframe.style.height) || 0;
+    if (Math.abs(newH - oldH) < 5) return; // skip trivial changes
+    // Save scroll position relative to viewport
+    var sy = window.scrollY;
+    var iframeTop = iframe.getBoundingClientRect().top + sy;
+    var isAbove = iframeTop < sy + window.innerHeight;
     iframe.style.height = newH + 'px';
     iframe.closest('.page-section').style.minHeight = newH + 'px';
-  }
+    // Restore scroll if the resized iframe is above current viewport
+    if (isAbove && sy > 0) {
+      var drift = newH - oldH;
+      if (iframeTop < sy && drift !== 0) {
+        window.scrollTo(0, sy + drift);
+      }
+    }
+  }, 100);
 });
 
 // ── Nav scroll tracking ──────────────────────────────────────
@@ -9806,7 +9823,14 @@ function update() {
     activeIdx = cur;
     navLinks.forEach(function(l, i) { l.classList.toggle('active', i === cur); if (i === cur) l.setAttribute('aria-current','page'); else l.removeAttribute('aria-current'); });
     dots.forEach(function(d, i)     { d.classList.toggle('active', i === cur); });
-    if (navLinks[cur]) navLinks[cur].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    if (navLinks[cur]) {
+      var navScroll = document.querySelector('.nav-scroll-area');
+      if (navScroll) {
+        var linkLeft = navLinks[cur].offsetLeft - navScroll.offsetLeft;
+        var center = linkLeft - navScroll.clientWidth / 2 + navLinks[cur].offsetWidth / 2;
+        navScroll.scrollTo({left: center, behavior: 'smooth'});
+      }
+    }
   }
 }
 
